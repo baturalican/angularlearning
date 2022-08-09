@@ -30,9 +30,12 @@ class="btn btn-primary"
 class="btn btn-secondary" 
 (click)="showParagraph()">Display Details
 </button>
-<p 
-    *ngIf="isTextVisible;">{{ secretText }}</p>
-<p 
-    *ngFor="let log of logs">
-    {{ log }}
-</p>
+
+<p *ngIf="isTextVisible;">{{ secretText }}</p>
+
+<div
+*ngFor="let log of logs; let i = index"
+[ngStyle]="{backgroundColor: getNewColor(i) ? 'Blue' : 'Transparent'}"
+[ngClass]="{greater: getNewColor(i)}">
+{{ log }}
+</div>

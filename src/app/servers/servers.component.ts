@@ -40,14 +40,14 @@ export class ServersComponent implements OnInit {
   showParagraph() {
     this.isTextVisible = !this.isTextVisible;
     let dateTime = new Date();
-    this.logs.push(dateTime.toLocaleDateString() + " " + dateTime.toLocaleTimeString());
+    this.logs.push(new Date().toUTCString());
     ++this.clickCount;
   }
 
-  getNewColor() {
-    if (this.clickCount === 5) {
-      return "Blue";
+  getNewColor(index: number) {
+    if (index >= 4) {
+      return true;
     }
-    return "White";
+    return false;
   }
 }
